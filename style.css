@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body{
+    background-color:#cbb56a;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    filter: brightness(0);
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 0;
+}
+header::before {
+    transition: filter 0.5s ease-in-out;
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('Imagenes/tablas2.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: 1;
+}
+
+.col-izquierda, .col-centro, .col-derecha {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+
+.col-izquierda {
+    justify-content: flex-start;
+}
+.col-centro {
+    justify-content: center;
+}
+.col-derecha {
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.logo {
+    width: 130px; /* Ajustalo como te guste */
+    height: auto;
+}
+
+.contacto {
+    font-size: 1.5em;
+    list-style: none;
+    color: #cbb56a;
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+.titulo {
+    font-size: 2em;
+    color: #cbb56a;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-columnas-b {
+    display: flex; /* Activa Flexbox */
+    justify-content: space-between; /* Espaciado uniforme entre columnas */
+    align-items: stretch; /* Alinea las columnas verticalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho del body */
+    height: auto; /* Ajusta la altura automáticamente */
+}
+
+.col-izquierda-b {
+    flex: 2; /* 66% of the space */
+    max-width: 66%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.col-derecha-b {
+    flex: 1; /* 33% of the space */
+    max-width: 33%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.promo{
+    text-align: center;
+    width: 50%;
+    height: 125%;
+}
+
+.lista-b{
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.lista-b li{
+    list-style: none;
+    text-align: left;
+    padding-top: 50px;
+    margin: 0;
+}
+
+.lista-centro-b li{
+    list-style: none;
+    text-align: center;
+    padding-top: 50px;
+    margin: 0;
+}
+
+.imagen-centro {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    height: 100%; /* Ocupa el 100% del alto del contenedor */
+    object-fit: cover; /* Asegura que la imagen se recorte proporcionalmente para llenar el contenedor */
+    display: block; /* Asegura que la imagen sea un bloque */
+    margin: 0 auto; /* Centra la imagen horizontalmente si es necesario */
+}
+
+.grid-cuadricula {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Espaciado entre los elementos */
+    justify-items: center; /* Centra los elementos horizontalmente */
+    align-items: start; /* Alinea los elementos al inicio verticalmente */
+}
+
+.grid-item {
+    text-align: center; /* Centra el texto debajo de las imágenes */
+}
+
+.imagen-cuadricula {
+    width: 100%; /* Ajusta al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen se recorte proporcionalmente */
+}
+
+.descripcion {
+    margin-top: 10px; /* Espaciado entre la imagen y la descripción */
+    font-size: 1em;
+    color: #333; /* Color del texto */
+    font-family: sans-serif;
+}
