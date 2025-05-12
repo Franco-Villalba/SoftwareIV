@@ -151,6 +151,9 @@ header::before {
 
 .grid-item {
     text-align: center; /* Centra el texto debajo de las imágenes */
+    height: 300px;
+    width: 300px;
+    padding-bottom: 50px;
 }
 
 .imagen-cuadricula {
