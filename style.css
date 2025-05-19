@@ -269,7 +269,9 @@ footer img{
     height: auto;
     z-index: 3;
 }
-
+.footer-centro .footer-direccion-link {
+    display: none;
+}
 /* Header y footer responsivos */
 @media (max-width: 700px) {
     header {
@@ -305,21 +307,27 @@ footer img{
         text-align: center;
         margin-bottom: 10px;
     }
+    .footer-centro {
+        min-height: 40px; /* o lo que consideres */
+        z-index: 3;
+    }
+
     .footer-centro .footer-direccion-link {
         display: block;
-        margin: 10px auto 0 auto;
+        margin: 10px auto;
+        padding: 5px;
         font-size: 1.1em;
-        color: #cbb56a;
-        background: none;
-        border: none;
-        text-align: center;
+        color: black;
         text-decoration: underline;
-        font-family: sans-serif;
+        text-align: center;
     }
+
     .footer-centro iframe.mapa {
         display: none;
     }
 }
-.footer-centro .footer-direccion-link {
-    display: none; /* Oculto por defecto, solo visible en mobile */
+@media (max-width: 700px) {
+    .correo-corte {
+        display: block;
+    }
 }
