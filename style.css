@@ -9,6 +9,12 @@ html, body{
     height: 100%;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -47,7 +53,7 @@ header::before {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 3;
+    z-index: 2;
 }
 
 .col-izquierda {
@@ -89,6 +95,7 @@ header::before {
     align-items: stretch; /* Alinea las columnas verticalmente */
     width: 100%; /* Asegura que ocupe todo el ancho del body */
     height: auto; /* Ajusta la altura automáticamente */
+    flex: 1;
 }
 
 .col-izquierda-b {
@@ -199,6 +206,7 @@ header::before {
 
 footer {
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
     align-items: center;
     min-height: 250px; /* Altura mínima, pero puede crecer */
@@ -321,6 +329,134 @@ footer img{
     display: none;
 }
 
+
+#loader-bg {
+    position: fixed;
+    z-index: 9999;
+    background: rgba(0,0,0,0.85); /* Fondo oscuro inicial */
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.8s, opacity 0.6s;
+}
+#loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo-loader {
+    width: 90px;
+    margin-bottom: 18px;
+    filter: drop-shadow(0 0 8px #cbb56a88);
+}
+.spinner {
+    border: 6px solid #cbb56a44;
+    border-top: 6px solid #cbb56a;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    animation: spin 1s linear infinite;
+}
+
+#icono-carrito.animar {
+    animation: carrito-bounce 0.4s;
+}
+@keyframes carrito-bounce {
+    0% { transform: scale(1);}
+    30% { transform: scale(1.25);}
+    60% { transform: scale(0.95);}
+    100% { transform: scale(1);}
+}
+/* Carrito flotante */
+#carrito-flotante {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+#icono-carrito {
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 4px #cbb56a88);
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: width 0.2s, height 0.2s;
+}
+#submenu-carrito {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    background: #fffbe9;
+    border: 1px solid #cbb56a;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+    min-width: 220px;
+    padding: 16px 12px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+    pointer-events: auto;
+}
+#submenu-carrito.oculto {
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+}
+#carrito-items {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}   
+.carrito-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.carrito-item img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #cbb56a55;
+    background: #fff;
+}
+.carrito-item-cantidad {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+.carrito-botones {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.carrito-botones button {
+    flex: 1;
+    padding: 7px 0;
+    border: none;
+    border-radius: 6px;
+    background: #cbb56a;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.carrito-botones button:hover {
+    background: #b49e4c;
+}
+
 @media (max-width: 820px) {
     .grid-item {
     width: 75px;
@@ -332,7 +468,8 @@ footer img{
     margin: 10px;
     }
     header {
-        height: 120px;
+        height: 150px;
+        min-height: 120px;
         padding: 0 8px;
     }
     .logo {
@@ -445,11 +582,25 @@ footer img{
 
 
 @media (max-width: 600px) {
+    #carrito-flotante {
+        bottom: 12px;
+        right: 12px;
+    }
+    #icono-carrito {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+    }
+    #submenu-carrito {
+        min-width: 160px;
+        padding: 10px 6px 8px 6px;
+        font-size: 0.95em;
+    }
     .acciones {
-    align-items: center;
-    display: grid;
-    gap: 5px;
-    align-items: center;
+        align-items: center;
+        display: grid;
+        gap: 5px;
+        align-items: center;
     }
     .contenedor-columnas-b {
         flex-direction: column;
