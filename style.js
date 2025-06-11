@@ -68,3 +68,34 @@ btnComprar.addEventListener('click', vaciarCarrito);
 
 // Inicializar
 renderCarrito();
+
+// Esperamos a que cargue todo el DOM
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("productos.json")
+      .then(response => response.json())
+      .then(productos => {
+        const contenedor = document.getElementById("contenedor-productos");
+
+        productos.forEach(producto => {
+          const item = document.createElement("div");
+          item.className = "grid-item";
+
+          item.innerHTML = `
+            <div class="contenedor-img">
+              <img src="${producto.imagen}" alt="${producto.alt}" class="imagen-cuadricula">
+            </div>
+            <p class="descripcion">${producto.descripcion}</p>
+            <div class="precio">$${producto.precio.toLocaleString()}</div>
+            <div class="acciones">
+              <input type="number" value="1" min="1" class="cantidad">
+              <button class="comprar">Comprar</button>
+            </div>
+          `;
+
+          contenedor.appendChild(item);
+        });
+      })
+      .catch(error => {
+        console.error("Error al cargar productos:", error);
+      });
+  });

@@ -1,0 +1,47 @@
+[
+  {
+    "imagen": "Imagenes/ensalada.png",
+    "descripcion": "Ensalada mixta con pollo",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/milacaballo.png",
+    "descripcion": "Milanesa de carne a caballo con papas fritas",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/salmon.png",
+    "descripcion": "Salmon con fideos y brocoli",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/sopaperuana.png",
+    "descripcion": "Sopa peruana",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/tacos.png",
+    "descripcion": "Tacos",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/Burguer.png",
+    "descripcion": "Hamburguesa XL",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/PolloPapas.png",
+    "descripcion": "Pechuga de pollo con de papas fritas y ensalada",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/GuisoConPollo.png",
+    "descripcion": "Guiso de verduras con pollo",
+    "precio": 1500
+  },
+  {
+    "imagen": "Imagenes/Arroz.png",
+    "descripcion": "Salteado de arroz, ensalada y pollo",
+    "precio": 1500
+  }
+]
