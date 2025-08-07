@@ -1,19 +1,24 @@
+/* Reset de márgenes, bordes y padding para todos los elementos */
+
 *{
     margin: 0;
     border: 0;
     padding: 0;
 }
+/* Fondo y altura base */
 
 html, body{
     background-color:#cbb56a;
     height: 100%;
 }
+/* Estructura principal del body */
 
 body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+/* ===================== HEADER ===================== */
 
 header {
     display: flex;
@@ -25,6 +30,7 @@ header {
     padding: 100px;
     z-index: 10;
 }
+/* Fondo oscuro sobre el header */
 
 header::after {
     content: "";
@@ -35,6 +41,8 @@ header::after {
     background-color: rgba(0, 0, 0, 1);
     z-index: 0;
 }
+/* Imagen de fondo difuminada en el header */
+
 header::before {
     transition: filter 0.5s ease-in-out;
     content: "";
@@ -47,6 +55,7 @@ header::before {
     filter: blur(30px);
     z-index: 1;
 }
+/* ===================== COLUMNAS DEL HEADER ===================== */
 
 .col-izquierda, .col-centro, .col-derecha {
     flex: 1;
@@ -68,11 +77,13 @@ header::before {
     flex-direction: column;
     align-items: flex-end;
 }
+/* Logo principal */
 
 .logo {
     width: 130px; /* Ajustalo como te guste */
     height: auto;
 }
+/* Información de contacto */
 
 .contacto {
     font-size: 1.5em;
@@ -82,6 +93,8 @@ header::before {
     padding: 0;
     margin: 0;
 }
+/* Título principal */
+
 .titulo {
     font-size: 2em;
     color: #cbb56a;
@@ -89,6 +102,7 @@ header::before {
     margin: 0;
     padding: 0;
 }
+/* ===================== LAYOUT PRINCIPAL ===================== */
 
 .contenedor-columnas-b {
     display: flex; /* Activa Flexbox */
@@ -98,6 +112,7 @@ header::before {
     height: auto; /* Ajusta la altura automáticamente */
     flex: 1;
 }
+/* Columna izquierda (productos) */
 
 .col-izquierda-b {
     flex: 2; /* 66% of the space */
@@ -106,6 +121,7 @@ header::before {
     padding: 10px;
     text-align: left; /* Alinea el texto a la izquierda */
 }
+/* Columna derecha (promos) */
 
 .col-derecha-b {
     flex: 1; /* 33% of the space */
@@ -117,6 +133,7 @@ header::before {
     flex-direction: column;
     align-items: flex-end;
 }
+/* ===================== PROMOS ===================== */
 
 /* Contenedor de promos en grid adaptable */
 .promo-grid {
@@ -131,42 +148,46 @@ header::before {
 
 /* Cada promo cuadrada */
 .promo {
-    aspect-ratio: 1 / 1;      /* Mantiene cuadrado */
-    width: 100%;               /* Ocupa todo el ancho de la celda */
-    max-width: 300px;          /* Tamaño máximo opcional */
+    aspect-ratio: 1 / 1;     
+    width: 100%;              
+    max-width: 300px;          
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;       /* Opcional: bordes redondeados */
+    border-radius: 12px;       
     overflow: hidden;
     padding: 0;
 }
+/* Imagen centrada en promo */
 
 .imagen-centro {
-    width: 100%; /* Ocupa el 100% del ancho del contenedor */
-    height: 100%; /* Ocupa el 100% del alto del contenedor */
-    object-fit: cover; /* Asegura que la imagen se recorte proporcionalmente para llenar el contenedor */
-    display: block; /* Asegura que la imagen sea un bloque */
-    margin: 0 auto; /* Centra la imagen horizontalmente si es necesario */
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    margin: 0 auto; 
 }
+/* ===================== GRID DE PRODUCTOS ===================== */
 
 .grid-cuadricula {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px; /* Espaciado entre los elementos */
-    justify-items: center; /* Centra los elementos horizontalmente */
-    align-items: start; /* Alinea los elementos al inicio verticalmente */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    justify-items: center; 
+    align-items: start; 
 }
+/* Cada producto */
 
 .grid-item {
     width: 250px;
-    height: 350px; /* altura total reservada para imagen + texto */
+    height: 350px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin: 10px;
 }
+/* Imagen del producto */
 
 .contenedor-img {
     max-width: 250px;
@@ -182,6 +203,7 @@ header::before {
     max-width: 100%;
     object-fit: contain;
 }
+/* Descripción y precio */
 
 .descripcion {
     text-align: center;
@@ -194,6 +216,7 @@ header::before {
     font-weight: bold;
     margin: 8px 0;
 }
+/* Acciones de compra */
 
 .acciones {
     display: flex;
@@ -222,6 +245,7 @@ header::before {
 .comprar:hover {
     background-color: #218838;
 }
+/* ===================== FOOTER ===================== */
 
 footer {
     display: flex;
@@ -235,6 +259,7 @@ footer {
     z-index: 0;
     flex-wrap: wrap; /* Permite que las columnas bajen si no entran */
 }
+/* Fondo oscuro y difuminado en el footer */
 
 footer::after {
     content: "";
@@ -257,6 +282,7 @@ footer::before {
     filter: blur(50px);
     z-index: 2;
 }
+/* Columnas del footer */
 
 .footer-col {
     position: relative;
@@ -286,6 +312,7 @@ footer::before {
     display: flex;
     flex-direction: column;
 }
+/* Redes sociales */
 
 .footer-social {
     list-style: none;
@@ -321,6 +348,7 @@ footer::before {
     font-family: sans-serif;
     margin-left: 5px;
 }
+/* Mapa en el footer */
 
 .mapa {
     height: 150px;
@@ -329,6 +357,7 @@ footer::before {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
+/* Texto del footer */
 
 footer p {
     font-size: 1.2em;
@@ -348,6 +377,7 @@ footer img{
     display: none;
 }
 
+/* ===================== LOADER ===================== */
 
 #loader-bg {
     position: fixed;
@@ -377,6 +407,7 @@ footer img{
     height: 54px;
     animation: spin 1s linear infinite;
 }
+/* ===================== CARRITO FLOTANTE ===================== */
 
 #icono-carrito.animar {
     animation: carrito-bounce 0.4s;
@@ -387,7 +418,8 @@ footer img{
     60% { transform: scale(0.95);}
     100% { transform: scale(1);}
 }
-/* Carrito flotante */
+/* Contenedor flotante del carrito */
+
 #carrito-flotante {
     position: fixed;
     bottom: 24px;
@@ -397,6 +429,7 @@ footer img{
     flex-direction: column-reverse;
     align-items: flex-end;
 }
+/* Icono del carrito */
 
 #icono-carrito {
     width: 56px;
@@ -408,6 +441,8 @@ footer img{
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     transition: width 0.2s, height 0.2s;
 }
+/* Submenú del carrito */
+
 #submenu-carrito {
     margin-bottom: 10px;
     margin-top: 0px;
@@ -432,6 +467,8 @@ footer img{
     pointer-events: none;
     transition: opacity 0.25s, transform 0.25s;
 }
+/* Items del carrito */
+
 #carrito-items {
     max-height: 220px;
     overflow-y: auto;
@@ -476,6 +513,35 @@ footer img{
     background: #b49e4c;
 }
 
+/* ===================== REDES SOCIALES MOBILE ===================== */
+
+.footer-social-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.footer-social-title {
+    margin-top: 5px;
+    font-size: 1.1em;
+    color:#cbb56a;
+    margin-bottom: 8px;
+    text-align: center;
+    font-family: sans-serif;
+}
+.footer-social-icons {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+.footer-social-icons img {
+    width: 32px;
+    height: 32px;
+}
+
+/* ===================== MEDIA QUERIES ===================== */
+/* Adaptaciones responsivas para diferentes tamaños de pantalla */
+
 @media (max-width: 1300px) {
     .promo{
         width: 100%;
@@ -497,7 +563,7 @@ footer img{
     }
     .grid-item {
     width: 200px;
-    height: 200px; /* altura total reservada para imagen + texto */
+    height: 200px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -509,7 +575,7 @@ footer img{
 @media (max-width: 1100px) {
     .grid-item {
     width: 100px;
-    height: 200px; /* altura total reservada para imagen + texto */
+    height: 200px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -542,7 +608,7 @@ footer img{
     }
     .grid-item {
     width: 75px;
-    height: 200px; /* altura total reservada para imagen + texto */
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -604,7 +670,7 @@ footer img{
         margin-bottom: 10px;
     }
     .footer-centro {
-        min-height: 40px; /* o lo que consideres */
+        min-height: 40px;
         z-index: 3;
     }
 
@@ -676,7 +742,7 @@ footer img{
     .promo-grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;     /* Centra todo el contenido */
+        justify-content: center;   
     }
 
     .promo {
@@ -737,30 +803,6 @@ footer img{
         justify-content: center;
         display: flex;
     }
-}
-
-.footer-social-mobile {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-.footer-social-title {
-    margin-top: 5px;
-    font-size: 1.1em;
-    color:#cbb56a;
-    margin-bottom: 8px;
-    text-align: center;
-    font-family: sans-serif;
-}
-.footer-social-icons {
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-}
-.footer-social-icons img {
-    width: 32px;
-    height: 32px;
 }
 
 @media (max-width: 500px) {

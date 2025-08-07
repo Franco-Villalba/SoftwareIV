@@ -1,5 +1,9 @@
-// Carrito simple
+/* ===================== REDES SOCIALES MOBILE ===================== */
+// Objeto para almacenar los productos del carrito
+
 const carrito = {};
+// Referencias a elementos del DOM relacionados con el carrito
+
 const carritoFlotante = document.getElementById('carrito-flotante');
 const iconoCarrito = document.getElementById('icono-carrito');
 const submenuCarrito = document.getElementById('submenu-carrito');
@@ -7,19 +11,24 @@ const carritoItems = document.getElementById('carrito-items');
 const btnCancelar = document.getElementById('carrito-cancelar');
 const btnComprar = document.getElementById('carrito-comprar');
 
-// Mostrar/ocultar submenú
+// ===================== EVENTOS DEL CARRITO =====================
+
+// Mostrar/ocultar submenú del carrito al hacer click en el icono
+
 iconoCarrito.addEventListener('click', () => {
   submenuCarrito.classList.toggle('oculto');
 });
 
-// Cerrar submenú al hacer click fuera
+// Cerrar submenú si se hace click fuera del carrito flotante
 document.addEventListener('click', (e) => {
   if (!carritoFlotante.contains(e.target) && !submenuCarrito.classList.contains('oculto')) {
     submenuCarrito.classList.add('oculto');
   }
 });
 
-// Agregar productos al carrito
+// ===================== AGREGAR PRODUCTOS AL CARRITO =====================
+// (Este bloque solo funciona si los productos ya están en el DOM al cargar la página)
+
 document.querySelectorAll('.grid-item').forEach(item => {
   const btn = item.querySelector('.comprar');
   btn.addEventListener('click', () => {
@@ -35,17 +44,24 @@ document.querySelectorAll('.grid-item').forEach(item => {
     renderCarrito();
   });
 });
+// ===================== RENDERIZAR CARRITO =====================
+// Actualiza el contenido visual del carrito flotante
 
-// Renderizar carrito
 function renderCarrito() {
+    // Animación del icono al agregar productos
   iconoCarrito.classList.add('animar');
   setTimeout(() => iconoCarrito.classList.remove('animar'), 400);
+
   carritoItems.innerHTML = '';
   const keys = Object.keys(carrito);
+
+  // Si el carrito está vacío, mostrar mensaje
   if (keys.length === 0) {
     carritoItems.innerHTML = '<div style="text-align:center;color:#888;">El carrito está vacío</div>';
     return;
   }
+
+  // Mostrar cada producto en el carrito
   keys.forEach(desc => {
     const { img, cantidad } = carrito[desc];
     const div = document.createElement('div');
@@ -55,22 +71,28 @@ function renderCarrito() {
     
   });
 }
+// ===================== VACIAR CARRITO =====================
+// Elimina todos los productos del carrito y lo oculta
 
-// Vaciar carrito
 function vaciarCarrito() {
   for (let k in carrito) delete carrito[k];
   renderCarrito();
   submenuCarrito.classList.add('oculto');
 }
+// Botones para vaciar el carrito (Cancelar y Comprar)
 
 btnCancelar.addEventListener('click', vaciarCarrito);
 btnComprar.addEventListener('click', vaciarCarrito);
 
-// Inicializar
+// Inicializar el carrito al cargar la página
+
 renderCarrito();
 
-// Esperamos a que cargue todo el DOM
+// ===================== CARGA DINÁMICA DE PRODUCTOS Y PROMOS =====================
+// Espera a que el DOM esté listo
+
 document.addEventListener("DOMContentLoaded", function () {
+    // Cargar productos desde productos.json y agregarlos al DOM
   fetch("productos.json")
     .then(response => response.json())
     .then(productos => {
@@ -94,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         contenedor.appendChild(item);
 
-        // ✅ Asignar evento al botón de compra dentro del bucle
+        // Asignar evento al botón de compra para cada producto dinámico
         const btn = item.querySelector('.comprar');
         btn.addEventListener('click', () => {
           const img = item.querySelector('img').getAttribute('src');
@@ -114,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => {
       console.error("Error al cargar productos:", error);
     });
-
+  // Cargar promociones desde PeterGriffing.json y agregarlas al DOM
   fetch("PeterGriffing.json")
     .then(response => response.json())
     .then(jiji => {
